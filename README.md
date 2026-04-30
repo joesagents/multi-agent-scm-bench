@@ -5,7 +5,7 @@ factory, i.e. a classical beer game setup). Lower cost wins.
 
 ## Why
 
-Across SCM, ten coordination strands have been shifting across three eras:
+In SCM, ten strands have been shift across three eras:
 
 | Strand | Era I: Networks & Relationships | Era II: Platforms & Ecosystems | Era III: Protocols & Agents |
 |---|---|---|---|
