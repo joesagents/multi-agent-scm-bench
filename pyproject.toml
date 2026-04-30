@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scm_bench"
+version = "0.3.0"
+description = "Multi-agent supply chain bench — a 4-tier beer-game testbed for hand-coded and LLM-driven agent policies, with a strict A2A-style agent contract."
+readme = "README.md"
+license = "0BSD"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [
+    { name = "Joachim Ehrenthal" },
+]
+keywords = ["supply-chain", "multi-agent", "beer-game", "a2a", "llm-agents", "bullwhip"]
+dependencies = [
+    "typer>=0.12.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "numpy>=1.26.0",
+    "PyYAML>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "ruff>=0.1.0",
+]
+llm-transformers = [
+    "transformers>=4.40",
+    "torch>=2.2",
+]
+llm-vllm = [
+    "vllm>=0.5",
+]
+
+[project.scripts]
+scm-bench = "scm_bench.cli:app"
+
+[project.urls]
+Repository = "https://github.com/joachim-ehrenthal/multi-agent-scm-bench"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scm_bench"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
