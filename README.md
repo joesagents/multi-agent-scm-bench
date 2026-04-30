@@ -20,7 +20,7 @@ Across SCM, ten coordination strands have been shifting across three eras:
 | Comparative advantage | Factor endowments | Institutional arrangements | Programmable capacity |
 | Value | Value-in-Exchange | Value-in-Use | Survival |
 
-Right now, we lack benchmarking for this shift. This bench offers a starting point with protocols, autonomy, and agency. Future releases may focus on agent co-design, the value of information as the fundamental unit of exchange, agency levels, the impact of intelligence (e.g. different models, modalities), and the role of evolution as survival in an intelligence explosion scenario. Further, adversarial elements require attention.
+Right now, we lack benchmarking for these shifts. This bench offers a starting point with protocols, autonomy, and agency. Future releases may focus on agent co-design, the value of information as the fundamental unit of exchange, agency levels, the impact of intelligence (e.g. different models, modalities), and the role of evolution as survival in an intelligence explosion scenario. Further, adversarial elements require attention.
 
 
 ## Layout
