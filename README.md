@@ -1,7 +1,7 @@
 # multi-agent-scm-bench
 
-A 4-tier agentic supply-chain testbed (retailer → wholesaler → distributor →
-factory — i.e. a classical beer game setup). Lower cost wins.
+A 4-tier agentic supply chain testbed (retailer → wholesaler → distributor →
+factory, i.e. a classical beer game setup). Lower cost wins.
 
 ## Why
 
