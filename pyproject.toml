@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "scm_bench"
 version = "0.3.0"
-description = "Multi-agent supply chain bench — a 4-tier beer-game testbed for hand-coded and LLM-driven agent policies, with a strict A2A-style agent contract."
+description = "4-tier agentic supply-chain testbed (beer game) for benchmarking agents."
 readme = "README.md"
 license = "0BSD"
 license-files = ["LICENSE"]
