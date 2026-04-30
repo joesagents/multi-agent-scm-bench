@@ -9,7 +9,7 @@ Across SCM, ten coordination strands have been shifting across three eras:
 
 | Strand | Era I: Networks & Relationships | Era II: Platforms & Ecosystems | Era III: Protocols & Agents |
 |---|---|---|---|
-| Structure | Networks | Platforms / ecosystems | Protocols |
+| Structure | Networks | Platforms / Ecosystems | Protocols |
 | Execution | Machine | Automation | Autonomy |
 | Power | Control | Co-creation | Agency |
 | Methods | Production | Orchestration | Co-design |
