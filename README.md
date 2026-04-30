@@ -18,7 +18,7 @@ Across SCM, ten coordination strands have been shifting across three eras:
 | Dominant logic | Goods (GDL) | Service (SDL) | Agency (ADL) |
 | Anchor actors | Replicators | Mediators | Explorers |
 | Comparative advantage | Factor endowments | Institutional arrangements | Programmable capacity |
-| Value | Transfer | Use | Survival |
+| Value | Value-in-Transaction | Value-in-Use | Survival |
 
 Right now, we lack benchmarking for this shift. This bench offers a starting point with protocols, autonomy, and agency. Future releases may focus on agent co-design, the value of information as the fundamental unit of exchange, agency levels, the impact of intelligence (e.g. different models, modalities), and the role of evolution as survival in an intelligence explosion scenario. Further, adversarial elements require attention.
 
