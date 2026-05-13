@@ -11,7 +11,7 @@ In SCM, ten strands shift across three eras:
 |---|---|---|---|
 | Structure | Networks | Platforms / Ecosystems | Protocols |
 | Execution | Machine | Automation | Autonomy |
-| Power | Control | Co-creation | Agency |
+| Power | Control | Co-creation | Recursion |
 | Methods | Production | Orchestration | Co-design |
 | Technology | Force | Information | Intelligence |
 | Transformations | Processes | Flows | Evolution |
