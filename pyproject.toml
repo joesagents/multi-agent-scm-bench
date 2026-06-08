@@ -40,7 +40,7 @@ llm-vllm = [
 scm-bench = "scm_bench.cli:app"
 
 [project.urls]
-Repository = "https://github.com/joachim-ehrenthal/multi-agent-scm-bench"
+Repository = "https://github.com/joesagents/multi-agent-scm-bench"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/scm_bench"]
