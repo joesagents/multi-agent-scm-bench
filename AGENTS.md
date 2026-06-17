@@ -60,11 +60,5 @@ scm-bench test-bundle my_team
 `examples/mirror/` (deterministic baseline) and `examples/llm/` (LLM-driven) are
 worked bundles to copy from.
 
-## Layout
-
-- `src/scm_bench/` — engine, validator, runner, metrics, LLM runtime
-- `examples/<name>/` — worked team bundles, each with its own `AGENTS.md`
-- `skills/` — operator skills: `install`, `run`
-- `tests/` — pytest suite
-
-License 0BSD. Tools and hardware: `ATTRIBUTION.md`.
+Directory layout: README.md. License 0BSD; tools and hardware:
+  ATTRIBUTION.md.
