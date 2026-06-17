@@ -12,7 +12,7 @@ Wire format (single line of JSON on stdout):
 - on internal worker crash: nonzero exit code + stderr; the parent
   surfaces this as E_BUNDLE_CRASH.
 
-Not directly user-facing — `scm_bench test-bundle` (and any other
+Not directly user-facing — `scm-bench test-bundle` (and any other
 caller that passes untrusted bundles) should call
 `validate_bundle_isolated`, not this script.
 """

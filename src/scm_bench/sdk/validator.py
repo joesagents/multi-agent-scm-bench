@@ -1,6 +1,6 @@
 """Bundle validator.
 
-Loaded by the `scm_bench test-bundle` CLI command and by the agent-side
+Loaded by the `scm-bench test-bundle` CLI command and by the agent-side
 `tests/test_local.py`. Validates a bundle directory against the v2
 contract and runs a short smoke simulation.
 
@@ -36,7 +36,7 @@ Two entry points, two trust levels:
   POSIX) RLIMIT_CPU / RLIMIT_AS caps. A timeout becomes
   `E_BUNDLE_TIMEOUT`; any subprocess crash (segfault, signal,
   unhandled `BaseException`, OOM-killed) becomes `E_BUNDLE_CRASH`.
-  This is the entry point the `scm_bench test-bundle` CLI uses by
+  This is the entry point the `scm-bench test-bundle` CLI uses by
   default. It is process isolation, not a sandbox: the child still
   has full filesystem and network access. For evaluation at scale,
   layer this under stronger isolation (cgroups, containers, etc.).

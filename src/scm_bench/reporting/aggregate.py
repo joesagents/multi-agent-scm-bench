@@ -198,9 +198,9 @@ def exemplar_candidates_table(aggs: list[_TeamAgg]) -> str:
         ["lowest token spend",
          min(student_aggs, key=lambda a: a.tokens_mean).team_id,
          "fewest tokens used per run"],
-        ["least stable (S2.3 vs S1.1)",
+        ["least stable (S2.3 deterministic shock vs S1.1)",
          max(student_aggs, key=stability_ratio).team_id,
-         "largest composite ratio s2.3/s1.1"],
+         "largest composite ratio deterministic-s2.3/s1.1"],
     ]
     return md_table(["Pick", "Team", "Why"], rows)
 
@@ -254,7 +254,7 @@ def write_aggregate_summary(
     if not rows:
         raise ValueError(
             f"no runs found for batch_id={batch_id!r} — "
-            "run `scm_bench batch-run` first."
+            "run `scm-bench batch-run` first."
         )
     aggs = _aggregate_teams(rows)
     scenario_ids = sorted({r.scenario_id for r in rows})

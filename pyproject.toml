@@ -38,6 +38,7 @@ llm-vllm = [
 
 [project.scripts]
 scm-bench = "scm_bench.cli:app"
+scm_bench = "scm_bench.cli:app"  # alias: the package-name spelling also works
 
 [project.urls]
 Repository = "https://github.com/joesagents/multi-agent-scm-bench"

@@ -1,8 +1,8 @@
 # AGENTS.md — scm_bench team bundle (Mirror starter)
 
-Contract for in-IDE coding agents (Claude Code, Codex, Cursor, etc.).
+Contract for coding agents (Claude Code, Codex, Cursor, etc.).
 Read this end-to-end before editing files in this bundle. The user
-is the human in the loop; you are running inside their IDE.
+is the human in the loop; you are the coding agent working on this bundle.
 
 ## What this bundle is
 
@@ -39,18 +39,20 @@ From the bundle root (the directory containing `manifest.json`):
 pip install -e .
 
 # 2. Validate + smoke (5 ticks, fast). Run after every edit.
-scm_bench test-bundle .
+scm-bench test-bundle .
 
 # 3. Full local run on Level 1 stable demand (365 ticks)
-scm_bench run-scenario --bundle . --scenario s1.1 \
+scm-bench run-scenario --bundle . --scenario s1.1 \
     --out runs --batch-id dev --team-id $(jq -r .team_id manifest.json)
 
 # 4. Read the metrics back
-scm_bench metrics --batch-id dev --out runs
+scm-bench metrics --batch-id dev --out runs
 ```
 
 Available scenarios in this build: `intro_step_demand` (5-tick smoke),
-`s1.1` (Level 1, stable demand, 365 ticks), `s2.3` (Level 2, step shock, 365 ticks).
+`s1.1` (Level 1, stable demand, 365 ticks), `s2.3` (Level 2, deterministic
+step shock with seed-invariant demand, 365 ticks), `s2.4` (Level 2, seeded
+stochastic shock, 365 ticks).
 
 ## How `step()` is called
 
@@ -169,10 +171,10 @@ Env vars:
 After any change:
 
 ```bash
-scm_bench test-bundle .         # MUST pass before anything else
-scm_bench run-scenario --bundle . --scenario s1.1 \
+scm-bench test-bundle .         # MUST pass before anything else
+scm-bench run-scenario --bundle . --scenario s1.1 \
     --out runs --batch-id dev --team-id <team>
-scm_bench metrics --batch-id dev --out runs
+scm-bench metrics --batch-id dev --out runs
 ```
 
 The `composite` column is the score. **Lower is better.** Mirror

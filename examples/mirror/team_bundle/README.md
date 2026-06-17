@@ -54,7 +54,7 @@ team_bundle/
 ├── wholesaler/{agent.py,agent.yaml}
 ├── distributor/{agent.py,agent.yaml}
 ├── factory/{agent.py,agent.yaml}
-└── tests/test_local.py            # runs `scm_bench test-bundle` for you
+└── tests/test_local.py            # runs `scm-bench test-bundle` for you
 ```
 
 ## Workflow
@@ -65,7 +65,7 @@ team_bundle/
    in `<role>/agent.yaml` and pick a `memory_max_entries`.
 3. If you emit messages from `step()`, declare the types in
    `supports_messages`.
-4. Run `scm_bench test-bundle .` from this directory. It validates the
+4. Run `scm-bench test-bundle .` from this directory. It validates the
    manifests, imports the entrypoints, and runs a 5-tick smoke
    simulation on `intro_step_demand`.
 5. Zip this directory flat (no extra parent folder) and submit to the

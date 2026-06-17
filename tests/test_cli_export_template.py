@@ -1,4 +1,4 @@
-"""`scm_bench export-template` overwrite-safety tests.
+"""`scm-bench export-template` overwrite-safety tests.
 
 `--force` previously did an unconditional `shutil.rmtree(out)` on whatever path the user passed.
 A path typo could wipe arbitrary directories. The fix is a marker file
@@ -15,7 +15,6 @@ from typer.testing import CliRunner
 from scm_bench import SDK_VERSION
 from scm_bench.cli import (
     BUNDLE_MARKER_FILENAME,
-    LEGACY_BUNDLE_MARKER_FILENAME,
     app,
 )
 
@@ -29,7 +28,7 @@ def test_export_template_drops_marker(tmp_path: Path) -> None:
     marker = out / BUNDLE_MARKER_FILENAME
     assert marker.exists()
     payload = json.loads(marker.read_text())
-    assert payload["created_by"] == "scm_bench export-template"
+    assert payload["created_by"] == "scm-bench export-template"
     assert payload["sdk_version"] == SDK_VERSION
 
 
@@ -66,21 +65,6 @@ def test_force_overwrite_allowed_with_legacy_manifest(tmp_path: Path) -> None:
     )
     result = runner.invoke(app, ["export-template", "--out", str(out), "--force"])
     assert result.exit_code == 0, result.output
-
-
-def test_force_overwrite_allowed_with_legacy_beergame_marker(tmp_path: Path) -> None:
-    """A bundle dir created by the previous CLI name (`.beergame-bundle`
-    marker) is still recognised by `--force` for one transition release."""
-    out = tmp_path / "old_bundle"
-    out.mkdir()
-    (out / LEGACY_BUNDLE_MARKER_FILENAME).write_text(
-        json.dumps({"created_by": "beergame export-template"})
-    )
-    result = runner.invoke(app, ["export-template", "--out", str(out), "--force"])
-    assert result.exit_code == 0, result.output
-    # New bundle now carries the new marker (and the old one is gone after rmtree).
-    assert (out / BUNDLE_MARKER_FILENAME).exists()
-    assert not (out / LEGACY_BUNDLE_MARKER_FILENAME).exists()
 
 
 def test_no_force_refuses_when_dir_exists(tmp_path: Path) -> None:

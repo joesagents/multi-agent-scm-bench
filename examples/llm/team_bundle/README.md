@@ -39,8 +39,8 @@ ollama pull gemma4:e4b
 #    macOS; on Linux you may need `ollama serve &`)
 
 # 4. Run your bundle as usual
-scm_bench test-bundle .
-scm_bench run-scenario --bundle . --scenario s1.1 \
+scm-bench test-bundle .
+scm-bench run-scenario --bundle . --scenario s1.1 \
     --out runs --batch-id me --team-id my-team
 ```
 
@@ -79,5 +79,5 @@ team_bundle/
 ├── distributor/{agent.py, agent.yaml}   # SYSTEM_PROMPT for distributor
 ├── factory/{agent.py, agent.yaml}       # SYSTEM_PROMPT for factory
 ├── tests/test_local.py
-└── AGENTS.md                            # contract for in-IDE coding agents
+└── AGENTS.md                            # contract for coding agents
 ```

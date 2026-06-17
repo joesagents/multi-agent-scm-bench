@@ -1,4 +1,4 @@
-"""Local smoke test — equivalent to `scm_bench test-bundle .`.
+"""Local smoke test — equivalent to `scm-bench test-bundle .`.
 
 Run from the bundle root:
 

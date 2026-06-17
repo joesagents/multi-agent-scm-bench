@@ -1,22 +1,16 @@
 """scm_bench CLI.
 
 Default + bundle-side commands:
-- scm_bench                 : default local run on the mirror starter team
-- scm_bench test-bundle PATH: validate a bundle and run a smoke (sandboxed
+- scm-bench                 : default local run on the mirror starter team
+- scm-bench test-bundle PATH: validate a bundle and run a smoke (sandboxed
                                       subprocess by default)
-- scm_bench export-template : copy the starter template into a new dir
+- scm-bench export-template : copy the starter template into a new dir
 
 Batch-run + reporting commands (P2a, P2b):
-- scm_bench run-scenario    : one bundle × one scenario × one seed → RunStore
-- scm_bench batch-run       : full team × scenario × seed matrix
-- scm_bench metrics         : print summary metrics for a batch-run
-- scm_bench report          : per-team Markdown rundowns + aggregate summary
-
-Phase 3 stubs: replay, leaderboard, compare.
-
-A `beergame` deprecation alias entrypoint forwards to the same Typer
-app and prints a one-line stderr warning. It will be removed in the
-next release.
+- scm-bench run-scenario    : one bundle × one scenario × one seed → RunStore
+- scm-bench batch-run       : full team × scenario × seed matrix
+- scm-bench metrics         : print summary metrics for a batch-run
+- scm-bench report          : per-team Markdown rundowns + aggregate summary
 """
 
 from __future__ import annotations
@@ -29,9 +23,6 @@ from importlib import resources
 from pathlib import Path
 
 import typer
-
-BUNDLE_MARKER_FILENAME = ".scm_bench-bundle"
-LEGACY_BUNDLE_MARKER_FILENAME = ".beergame-bundle"
 
 from scm_bench import SDK_VERSION
 from scm_bench.runner.batch import (
@@ -49,7 +40,9 @@ from scm_bench.sdk.validator import (
     validate_bundle_safe,
 )
 from scm_bench.starters.mirror import MirrorAgent
-from scm_bench.trace.store import MIRROR_TEAM_ID, RunStore
+from scm_bench.trace.store import RunStore
+
+BUNDLE_MARKER_FILENAME = ".scm_bench-bundle"
 
 app = typer.Typer(
     name="scm_bench",
@@ -239,12 +232,12 @@ def export_template(
 
     typer.secho(f"OK  starter template copied to {out}", fg=typer.colors.GREEN)
     typer.echo(f"  edit  : {out}/<role>/agent.py")
-    typer.echo(f"  test  : scm_bench test-bundle {out}")
+    typer.echo(f"  test  : scm-bench test-bundle {out}")
 
 
 def _write_bundle_marker(bundle_root: Path) -> None:
     marker = {
-        "created_by": "scm_bench export-template",
+        "created_by": "scm-bench export-template",
         "sdk_version": SDK_VERSION,
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
@@ -257,13 +250,7 @@ def _is_safe_to_overwrite(path: Path) -> bool:
     """True iff `path` is recognisable as a scm_bench bundle directory."""
     if not path.is_dir():
         return False
-    # Accept either the new marker or the legacy `.beergame-bundle` marker so
-    # that bundle dirs created with the previous CLI name are still
-    # recognised by `--force`. (One-release back-compat shim — drop alongside
-    # the `beergame` deprecation alias next release.)
     if (path / BUNDLE_MARKER_FILENAME).exists():
-        return True
-    if (path / LEGACY_BUNDLE_MARKER_FILENAME).exists():
         return True
     manifest = path / "manifest.json"
     if not manifest.exists():
@@ -605,48 +592,6 @@ def report_cmd(
         git_sha=git_sha,
     )
     typer.echo(f"wrote {summary_path}")
-
-
-@app.command("replay")
-def replay_cmd(
-    run_id: str = typer.Argument(...),
-    tick: int | None = typer.Option(None, "--tick"),
-) -> None:
-    """[Phase 3] Replay a recorded run, optionally at a specific tick."""
-    raise typer.Exit(typer.echo("replay is not yet shipped (Phase 3).", err=True) or 2)
-
-
-@app.command("leaderboard")
-def leaderboard_cmd(scenario: str = typer.Argument(...)) -> None:
-    """[Phase 3] Rank bundles for a scenario."""
-    raise typer.Exit(
-        typer.echo("leaderboard is not yet shipped (Phase 3).", err=True) or 2
-    )
-
-
-@app.command("compare")
-def compare_cmd(
-    run_id_1: str = typer.Argument(...),
-    run_id_2: str = typer.Argument(...),
-) -> None:
-    """[Phase 3] Side-by-side comparison of two runs."""
-    raise typer.Exit(typer.echo("compare is not yet shipped (Phase 3).", err=True) or 2)
-
-
-
-def beergame_deprecated() -> None:
-    """Deprecation shim for the old `beergame` console_scripts entry point.
-
-    Forwards every invocation to the canonical `scm_bench` Typer
-    app after printing a one-line stderr warning. The `beergame`
-    entrypoint will be removed in the next release.
-    """
-    print(
-        "warning: `beergame` is deprecated and will be removed next release; "
-        "use `scm_bench` instead.",
-        file=sys.stderr,
-    )
-    app()
 
 
 if __name__ == "__main__":

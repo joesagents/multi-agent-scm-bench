@@ -283,7 +283,7 @@ def per_tier_results_table(*, view: TeamView, store: RunStore) -> str:
 
 
 # ----------------------------------------------------------------------
-# Table 5 — stability check (S1.1 vs S2.3)
+# Table 5 — stability check (S1.1 vs deterministic S2.3)
 # ----------------------------------------------------------------------
 
 
@@ -333,10 +333,10 @@ def stability_table(view: TeamView) -> str:
     held_str = "**yes**" if held else "**no**"
     suffix = (
         f"\n\nPopulation quartile direction held? {held_str} "
-        "(quartile rank on s1.1 vs s2.3 — same → robust strategy.)"
+        "(quartile rank on s1.1 vs deterministic s2.3 — same → robust strategy.)"
     )
     return md_table(
-        ["Metric", "S1.1 (stable)", "S2.3 (disruption)"], rows
+        ["Metric", "S1.1 (stable)", "S2.3 (deterministic shock)"], rows
     ) + suffix
 
 
@@ -353,7 +353,7 @@ def sensitivity_table(view: TeamView) -> str:
                 ["Component changed", "Before", "After", "Explanation"],
                 [["", "", "", ""]],
             )
-            + "\n\n_Run `scm_bench test-bundle <bundle> --variant <name>` "
+            + "\n\n_Run `scm-bench test-bundle <bundle> --variant <name>` "
             "to populate this table automatically with a before/after pair._"
         )
     rows = []

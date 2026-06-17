@@ -1,6 +1,6 @@
 # AGENTS.md — scm_bench team bundle (LLM starter)
 
-Contract for in-IDE coding agents (Claude Code, Codex, Cursor, etc.).
+Contract for coding agents (Claude Code, Codex, Cursor, etc.).
 This bundle is the LLM-driven starter — every `step()` queries a local
 LLM by default. The Mirror starter's `AGENTS.md` covers the contract
 that's identical between bundles; read it for layout, hard constraints,
@@ -76,10 +76,10 @@ mirror baseline and pretend the LLM is firing.
 
 ## Verifying the LLM actually ran
 
-After `scm_bench run-scenario`, check the metrics:
+After `scm-bench run-scenario`, check the metrics:
 
 ```bash
-scm_bench metrics --batch-id dev --out runs
+scm-bench metrics --batch-id dev --out runs
 ```
 
 The `tokens` column reports total tokens generated. If it is `0`, the
@@ -88,7 +88,7 @@ fallback fired on every tick — the LLM call is failing. Diagnose with:
 ```bash
 ollama list                                        # is the model pulled?
 curl http://localhost:11434/api/tags               # is the server up?
-SCB_LLM_TIMEOUT_S=180 scm_bench test-bundle .   # is it just slow?
+SCB_LLM_TIMEOUT_S=180 scm-bench test-bundle .   # is it just slow?
 ```
 
 ## What to edit
@@ -127,10 +127,10 @@ The autopilot path:
 
 ```bash
 ollama pull gemma4:e4b                           # if not already pulled
-scm_bench test-bundle .                    # MUST pass
-scm_bench run-scenario --bundle . --scenario s1.1 \
+scm-bench test-bundle .                    # MUST pass
+scm-bench run-scenario --bundle . --scenario s1.1 \
     --out runs --batch-id dev --team-id $(jq -r .team_id manifest.json)
-scm_bench metrics --batch-id dev --out runs
+scm-bench metrics --batch-id dev --out runs
 ```
 
 If `tokens` in the metrics output is 0, the LLM didn't fire — diagnose

@@ -20,7 +20,7 @@ In SCM, ten strands shift across three eras:
 | Comparative advantage | Factor endowments | Institutional arrangements | Programmable capacity |
 | Value | Value-in-Exchange | Value-in-Use | Survival |
 
-Right now, we lack benchmarking and simulation for these shifts. This bench offers a starting point with protocols, autonomy, and agency. Future releases may focus on agent co-design, the value of information as the fundamental unit of exchange, agency levels, adversarial action, the impact of intelligence (e.g. models, modalities, memory, harnesses), and the role of evolution as survival in an intelligence explosion scenario. We offer this bench to the AI research community: *supply chain is the canonical multi-agent system*, and progress here will advance work everywhere agents coordinate under protocols, incomplete information, uncertainty, and network dynamics.
+Right now, we lack benchmarking and simulation for these shifts. This bench offers a starting point with protocols, autonomy, and agency. Future releases may focus on agent co-design, the value of information as the fundamental unit of exchange, agency levels, the impact of intelligence (e.g. different models, modalities), and the role of evolution as survival in an intelligence explosion scenario. Further, adversarial elements require attention.
 
 
 ## Layout
@@ -31,6 +31,8 @@ Right now, we lack benchmarking and simulation for these shifts. This bench offe
 - `examples/llm/` — LLM-driven agent via transformers / vLLM /
   OpenAI-compatible (including local Ollama)
 - `tests/` — pytest suite
+- `skills/` — operator skills (`install`, `run`) for coding agents: set up and
+  verify the bench, then drive it and read the `composite` verdict
 
 Bundle contracts and run/scoring instructions live in each
 `examples/<name>/AGENTS.md`.
